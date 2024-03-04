@@ -9,9 +9,9 @@ export const Navbar = () => {
         <div>
             <nav className="bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-600 mb-0 pb-0">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                    <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                        <img src={myImg} className="h-10" alt="Logo" />
-                        <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Link It</span>
+                    <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+                        {/* <img src={myImg} className="h-10" alt="Logo" /> */}
+                        <span className="lg:text-4xl md:text-5xl text-4xl text-white font-black max-w-2xl text-center mx-auto tracking-tight py-4 pb-1self-center whitespace-nowrap ">Link It</span>
                     </a>
                     <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                         <button
@@ -32,14 +32,18 @@ export const Navbar = () => {
                                 <a href="/" className="block py-2 px-3 text-white rounded md:bg-transparent md:text-blue-500 md:p-0 dark:text-blue-500" aria-current="page">Home</a>
                             </li>
                             <li>
+                                <button onClick={()=>{
+                                    navigate("/about")
+                                }}>
                                 <a href="#" className="block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+                                </button>
                             </li>
                             <li>
                                 <a href="https://github.com/maruf-rahman007/Link-it" target="_blank" rel="noopener noreferrer" className="block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Github</a>
                             </li>
-                            <li>
+                            {/* <li>
                                 <a href="#" className="block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>
