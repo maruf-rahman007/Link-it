@@ -6,19 +6,25 @@ import {
 } from "react-router-dom";
 import { Signup } from './pages/Signup';
 import { Login } from './pages/Login';
+import { Navbar } from './pages/Navbar';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
+    <BrowserRouter>
     <div>
-      <BrowserRouter>
+    <div className="mb-0.5">
+      <Navbar/>
+    </div>
+    <div className='mt-16'>
+      
         <Routes>
           <Route path="/signup" element={<Signup/>} />
           <Route path="/login" element={<Login/>} />
         </Routes>
-      </BrowserRouter>
     </div>
+    </div>
+    </BrowserRouter>
   )
 }
 
