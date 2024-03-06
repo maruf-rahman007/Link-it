@@ -4,7 +4,7 @@ export const About = () => {
     return (
         <div class="sm:flex items-center max-w-screen-xl">
             <div class="sm:w-1/2 p-10">
-                <div class="image object-center text-center">
+                <div class="image object-center text-center pt-10">
                     <img src={myImg}/>
                 </div>
             </div>

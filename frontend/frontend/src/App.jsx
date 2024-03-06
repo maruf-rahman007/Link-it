@@ -11,6 +11,7 @@ import { LandingPage } from './pages/LandingPage';
 import { Footer } from './pages/Footer';
 import { About } from './pages/About';
 import { InfoCard } from './pages/InfoCard';
+import { Card } from './pages/Card';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About/>} />
+            <Route path=":username" element={<Card/>} />
           </Routes>
         </div>
 

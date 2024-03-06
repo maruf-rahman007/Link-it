@@ -32,9 +32,9 @@ export const Signup = () => {
   };
 
   return (
-    <div className={darkMode ? 'dark' : ''}>
+    <div className={darkMode ? 'dark' : ''} >
       <section className={`bg-gray-50 ${darkMode ? 'dark:bg-gray-900' : ''}`}>
-        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 pt-20">
           {/* <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
             <img className="w-38 h-12 mr-2" src={myImage} alt="logo" />
             Link It
