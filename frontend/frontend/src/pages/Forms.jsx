@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 export const Form = () => {
@@ -14,34 +15,37 @@ export const Form = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint
-        // const apiUrl = 'YOUR_API_ENDPOINT';
-
-        // try {
-        //     const response = await fetch(apiUrl, {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify({
-        //             platform: selectedPlatform,
-        //             link: profileLink,
-        //         }),
-        //     });
-
-        //     if (response.ok) {
-        //         // Handle success (optional)
-        //         console.log('Post request successful!');
-        //     } else {
-        //         // Handle error (optional)
-        //         console.error('Post request failed');
-        //     }
-        // } catch (error) {
-        //     console.error('Error:', error);
-        // }
-        console.log(selectedPlatform + " " + profileLink)
+    
+        try {
+            const response = await axios.post(
+                "http://localhost:3000/api/v1/form",
+                {
+                    platformName: selectedPlatform,
+                    platformLink: profileLink,
+                },
+                {
+                    headers: {
+                        Authorization: "Bearer " + localStorage.getItem("token"),
+                        'Content-Type': 'application/json'
+                    },
+                }
+            );
+            if (response) {
+                // Handle success (optional)
+                console.log('Post request successful!');
+                console.log(response);
+            } else {
+                // Handle error (optional)
+                console.error('Post request failed');
+                console.log(response);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    
+        console.log(selectedPlatform + " " + profileLink);
     };
+    
 
     return (
         <div className='pt-14'>

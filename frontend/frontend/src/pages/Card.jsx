@@ -1,9 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import myImage from '../static/logo.png';
 import { useParams } from "react-router-dom";
+import axios from "axios";
+
+
 export const Card = () => {
-    let { username } = useParams()
-    username = username.slice(1)
+    const [socials, setSocials] = useState([]);
+    const { username } = useParams();
+  
+    useEffect(() => {
+        async function fetchDatas(username) {
+          try {
+            const response = await axios.get(`http://localhost:3000/api/v1/social-link/${username}`);
+            const { socialMediaLinks } = response.data;
+      
+            // Extract only the necessary information (name and url) from socialMediaLinks
+            const extractedData = socialMediaLinks.map(link => ({
+              name: link.name,
+              url: link.url,
+            }));
+      
+            setSocials(extractedData);
+            console.log(extractedData);
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        }
+      
+        fetchDatas(username);
+      }, [username]);
+      
     return (
         <div className="grid justify-items-center pt-32">
             <div className="w-full max-w-sm bg-gray-800 dark:border-gray-700 rounded-t-lg">
