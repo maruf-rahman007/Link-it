@@ -10,6 +10,7 @@ import { Navbar } from './pages/Navbar';
 import { LandingPage } from './pages/LandingPage';
 import { Footer } from './pages/Footer';
 import { About } from './pages/About';
+import { InfoCard } from './pages/InfoCard';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Navbar />
         <div className='mt-16'> 
           <Routes>
+            <Route path='/info' element={<InfoCard/>}/>
             <Route path='/' element={<LandingPage />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
