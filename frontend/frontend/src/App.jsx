@@ -12,6 +12,7 @@ import { Footer } from './pages/Footer';
 import { About } from './pages/About';
 import { InfoCard } from './pages/InfoCard';
 import { Card } from './pages/Card';
+import { Form } from './pages/Forms';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About/>} />
             <Route path=":username" element={<Card/>} />
+            <Route path="/forms" element={<Form/>} />
           </Routes>
         </div>
 

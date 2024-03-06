@@ -99,7 +99,30 @@ const loginSchema = zod.object({
       }
     }
 });
-  
+
+
+// Form data input 
+
+const formBody = zod.object({
+platformName: zod.string(),
+platformLink: zod.string()
+})
+
+
+
+router.post("/form", async (req,res)=>{
+  const body = req.body
+  console.log(body)
+  const { success } = formBody.safeParse(body)
+  if (!success) {
+      return res.status(411).json({
+          message:"Invalid Inputs "
+      })
+  } else {
+    
+  }
+
+})
 
 
 
