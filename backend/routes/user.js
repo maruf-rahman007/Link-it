@@ -67,7 +67,7 @@ const loginSchema = zod.object({
 router.post('/login', async (req, res) => {
   const body = req.body;
   const { success } = loginSchema.safeParse(body);
-
+  
   if (!success) {
     return res.status(411).json({
       message: 'Invalid inputs',
@@ -76,15 +76,13 @@ router.post('/login', async (req, res) => {
     const findUser = await User.findOne({
       email: body.email,
     });
-
+    
     if (findUser) {
       const passwordMatch = await bcrypt.compare(body.password, findUser.password);
-
       if (passwordMatch) {
         const token = jwt.sign({
           userId: findUser._id,
         }, JWT_SECRET);
-
         res.json({
           token: token,
         });
@@ -139,5 +137,32 @@ router.post("/form", userMiddleware, async (req, res) => {
     })
   }
 })
+
+router.get("/auth", userMiddleware, async (req, res) => {
+  
+  try {
+    const userId = req.userId;
+    const userInfo = await User.findOne({
+      _id:userId
+    });
+
+    if (!userInfo) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.json({
+      success: true,
+      user: {
+        userId: userInfo.userId,
+        username: userInfo.username,
+        email: userInfo.email,
+      }
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Internal Server Error. Please try again."
+    });
+  }
+});
 
 module.exports = router

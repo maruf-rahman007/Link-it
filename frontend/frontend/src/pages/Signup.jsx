@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import myImage from '../static/logo.png';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+
 export const Signup = () => {
   const navigate = useNavigate()
   const [darkMode, setDarkMode] = useState(true); // Set dark mode as default
@@ -25,7 +26,9 @@ export const Signup = () => {
     });
 
       localStorage.setItem("token", response.data.token);
-      console.log(response.data.token);
+      localStorage.setItem("isLoggedIn", true);
+      navigate("/forms")
+      window,location.reload()
     } catch (error) {
       console.error("Error submitting form:", error);
     }

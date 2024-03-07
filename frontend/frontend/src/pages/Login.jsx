@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import myImage from '../static/logo.png';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../components/AuthProvider';
+
 export const Login = () => {
+  const { isLoggedIn, login } = useAuth()
   const navigate = useNavigate()
   const [darkMode, setDarkMode] = useState(true); // Set dark mode as default
   const [email,setEmail] = useState("")
   const [password,setpassword] = useState("")
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await axios.post("http://localhost:3000/api/v1/login", {
         email,
@@ -19,9 +21,11 @@ export const Login = () => {
           'Content-Type': 'application/json'
         }
     });
-
+      
       localStorage.setItem("token", response.data.token);
-      console.log(response.data.token);
+      localStorage.setItem("isLoggedIn", true);
+      await login()
+      navigate("/forms")
     } catch (error) {
       console.error("Error submitting form:", error);
     }

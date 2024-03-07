@@ -13,9 +13,11 @@ import { About } from './pages/About';
 import { InfoCard } from './pages/InfoCard';
 import { Card } from './pages/Card';
 import { Form } from './pages/Forms';
+import { AuthProvider } from './components/AuthProvider';
 
 function App() {
   return (
+    <AuthProvider>
     <BrowserRouter>
       <div>
         <Navbar />
@@ -30,10 +32,10 @@ function App() {
             <Route path="/forms" element={<Form/>} />
           </Routes>
         </div>
-
         <Footer />
       </div>
     </BrowserRouter>
+    </AuthProvider>
   )
 }
 

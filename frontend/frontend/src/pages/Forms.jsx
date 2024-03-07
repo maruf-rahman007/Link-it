@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Form = () => {
     const [selectedPlatform, setSelectedPlatform] = useState('instagram');
     const [profileLink, setProfileLink] = useState('');
-
+    const navigate = useNavigate()
     const handlePlatformChange = (e) => {
         setSelectedPlatform(e.target.value);
     };
@@ -32,18 +33,15 @@ export const Form = () => {
             );
             if (response) {
                 // Handle success (optional)
+                navigate("/info")
                 console.log('Post request successful!');
-                console.log(response);
             } else {
                 // Handle error (optional)
                 console.error('Post request failed');
-                console.log(response);
             }
         } catch (error) {
             console.error('Error:', error);
         }
-    
-        console.log(selectedPlatform + " " + profileLink);
     };
     
 
